@@ -4,6 +4,7 @@ import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 import { listLogEntries } from './API';
 import mapPin from './assets/map-pin (1).svg';
 import mapPinRed from './assets/map-pin-red.svg';
+import LogEntryForm from './LogEntryForm';
 // import 'mapbox-gl/dist/mapbox-gl.css';
 
 const App = () => {
@@ -22,7 +23,6 @@ const App = () => {
     (async () => {
       const logEntries = await listLogEntries();
       setLogEntries(logEntries);
-      console.log(logEntries);
     })();
   }, []);
 
@@ -114,7 +114,7 @@ const App = () => {
             anchor="top"
           >
             <div className="popup">
-              <h3>new log</h3>
+              <LogEntryForm location={addEntryLocation} />
             </div>
           </Popup>
         </>
